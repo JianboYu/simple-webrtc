@@ -1,0 +1,10 @@
+SET(cng_src cng_helpfuns.c webrtc_cng.c)
+INCLUDE_DIRECTORIES("./include" ../../../ ../../main)
+ADD_LIBRARY(libcng STATIC ${cng_src})
+if (NOT ANDROID)
+  SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
+endif()
+MESSAGE(INFO " libcng CMAKE_C_FLAGS: ${CMAKE_C_FLAGS}")
+
+SET_TARGET_PROPERTIES(libcng PROPERTIES OUTPUT_NAME "libcng")
+TARGET_LINK_LIBRARIES(libcng libsystem_wrappers)

@@ -1,0 +1,10 @@
+SET(g711_src g711.c g711_interface.c)
+INCLUDE_DIRECTORIES("./include" ../../../ ../../main)
+ADD_LIBRARY(libg711 STATIC ${g711_src})
+if (NOT ANDROID)
+  SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
+endif()
+MESSAGE(INFO " libg711 CMAKE_C_FLAGS: ${CMAKE_C_FLAGS}")
+
+SET_TARGET_PROPERTIES(libg711 PROPERTIES OUTPUT_NAME "libg711")
+TARGET_LINK_LIBRARIES(libg711 libsystem_wrappers)

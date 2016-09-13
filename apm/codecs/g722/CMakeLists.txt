@@ -1,0 +1,10 @@
+SET(g722_src g722_decode.c  g722_encode.c  g722_interface.c)
+INCLUDE_DIRECTORIES("./include" ../../../ ../../main)
+ADD_LIBRARY(libg722 STATIC ${g722_src})
+if (NOT ANDROID)
+  SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
+endif()
+MESSAGE(INFO " libg722 CMAKE_C_FLAGS: ${CMAKE_C_FLAGS}")
+
+SET_TARGET_PROPERTIES(libg722 PROPERTIES OUTPUT_NAME "libg722")
+TARGET_LINK_LIBRARIES(libg722 libsystem_wrappers)
