@@ -22,7 +22,8 @@ RWLockPosix::~RWLockPosix()
 
 int RWLockPosix::Init()
 {
-    return pthread_rwlock_init(&_lock, 0);
+    pthread_rwlock_init(&_lock, 0);
+    return 0;
 }
 
 void RWLockPosix::AcquireLockExclusive()

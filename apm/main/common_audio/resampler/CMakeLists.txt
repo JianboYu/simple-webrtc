@@ -3,8 +3,13 @@ SET(audio_resampler_src push_resampler.cc
                         push_sinc_resampler.cc
                         sinusoidal_linear_chirp_source.cc
                         sinc_resampler.cc
-                        sinc_resampler_sse.cc 
 )
+
+if (CMAKE_SYSTEM_PROCESSOR STREQUAL "armv7-a")
+else ()
+  #x86
+  SET(audio_resampler_src ${audio_resampler_src}; sinc_resampler_sse.cc)
+endif ()
 
 INCLUDE_DIRECTORIES("./include" ../../../../ ../../../main)
 ADD_LIBRARY(libaudio_resampler STATIC ${audio_resampler_src})

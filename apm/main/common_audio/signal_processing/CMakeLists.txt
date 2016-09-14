@@ -37,10 +37,12 @@ INCLUDE_DIRECTORIES("./include" ../../../../ ../../../main)
 ADD_LIBRARY(libaudio_signal_process STATIC ${audio_signal_process_src})
 if (NOT ANDROID)
   SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
+else (ANDROID)
+  SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DWEBRTC_ANDROID")
 endif()
 SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DWEBRTC_POSIX")
 
 MESSAGE(INFO " libaudio_signal_process CMAKE_C_FLAGS: ${CMAKE_C_FLAGS}")
 
 SET_TARGET_PROPERTIES(libaudio_signal_process PROPERTIES OUTPUT_NAME "libaudio_signal_process")
-TARGET_LINK_LIBRARIES(libaudio_signal_process libsystem_wrappers)
+TARGET_LINK_LIBRARIES(libaudio_signal_process libsystem_wrappers libcommon_audio)

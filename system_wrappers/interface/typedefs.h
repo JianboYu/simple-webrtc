@@ -94,6 +94,13 @@
 
 #if !defined(_MSC_VER)
   #include <stdint.h>
+  #ifdef __cplusplus
+    #define __STDC_CONSTANT_MACROS
+    #ifdef _STDINT_H
+      #undef _STDINT_H
+    #endif
+    # include <stdint.h>
+  #endif
 #else
     // Define C99 equivalent types.
     // Since MSVC doesn't include these headers, we have to write our own

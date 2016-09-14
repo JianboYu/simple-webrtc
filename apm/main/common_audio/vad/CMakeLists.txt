@@ -12,4 +12,4 @@ endif()
 MESSAGE(INFO " libaudio_vad CMAKE_C_FLAGS: ${CMAKE_C_FLAGS}")
 
 SET_TARGET_PROPERTIES(libaudio_vad PROPERTIES OUTPUT_NAME "libaudio_vad")
-TARGET_LINK_LIBRARIES(libaudio_vad libsystem_wrappers)
+TARGET_LINK_LIBRARIES(libaudio_vad libsystem_wrappers libaudio_signal_process)

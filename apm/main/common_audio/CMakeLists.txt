@@ -10,6 +10,8 @@ INCLUDE_DIRECTORIES("./include" ../../../ ../../main)
 ADD_LIBRARY(libcommon_audio STATIC ${common_audio_src})
 if (NOT ANDROID)
   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+else (ANDROID)
+  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DWEBRTC_ANDROID -DWEBRTC_POSIX")
 endif()
 
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_PRJ_C_FLAGS} -std=c++11 -Wno-unused-local-typedefs -Wno-sign-compare")
